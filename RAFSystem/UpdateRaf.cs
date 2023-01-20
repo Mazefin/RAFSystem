@@ -1,9 +1,12 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
@@ -128,7 +131,7 @@ namespace RAFSystem
         // Update Button, Update Selected Student File
         private void button2_Click(object sender, EventArgs e)
         {
-
+           
             // Initialise Strings to set as Text for later.
             String
                 StID,
@@ -677,6 +680,52 @@ namespace RAFSystem
 
         private void printraf_Click(object sender, EventArgs e)
         {
+
+            MessageBox.Show("RAF Printed");
+
+
+            String fileName = id.Text + "RAF"+ ".pdf";
+           
+
+            string[] output1 =
+           {
+                " [BASIC RAF] ",
+
+                "[Student ID]: " + id.Text + " ",
+                "[First Name]: " + firstname.Text + " ",
+                "[Middle Name]: " + middleName.Text + " ",
+                "[Last Name]: " + lastname.Text + " ",
+                "[Gender]: " + gender.Text + " ",
+                "[Course]: " + course.Text + " ",
+
+
+            };
+
+
+
+            iTextSharp.text.Document doc = new iTextSharp.text.Document(PageSize.A4.Rotate());
+            PdfWriter.GetInstance(doc, new FileStream(fileName, FileMode.Create));
+            doc.Open();
+
+
+            for (int i = 0; i < output1.Length; i++)
+            {
+                doc.Add(new iTextSharp.text.Paragraph(output1[i]));
+            }
+
+            ListViewItem[] items = new ListViewItem[listView1.Items.Count];
+            listView1.Items.CopyTo(items, 0);
+
+            for (int i = 0; i < items.Length; i++)
+            {
+
+                doc.Add(new iTextSharp.text.Paragraph(items[i].Text.ToString()));
+            }
+            doc.Close();
+
+
+
+
 
         }
     }

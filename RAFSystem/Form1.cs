@@ -15,6 +15,22 @@ namespace RAFSystem
         public Form1()
         {
             InitializeComponent();
+
+            
+                password.ForeColor = Color.Gray;
+                password.Text = "Enter Password";
+                password.UseSystemPasswordChar = false;
+                SelectNextControl(password, true, true, false, true);
+
+
+                username.ForeColor = Color.Gray;
+                username.Text = "Enter Username";
+                username.UseSystemPasswordChar = false;
+                SelectNextControl(password, true, true, false, true);
+
+            
+
+
         }
 
         public UpdateRaf URAF { get; set; }
@@ -64,6 +80,48 @@ namespace RAFSystem
         private void exitbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                password.UseSystemPasswordChar = false;
+
+
+
+            }
+            else
+            {
+
+                password.UseSystemPasswordChar = true;
+            }
+        }
+
+      
+
+      
+
+        private void username_Click(object sender, EventArgs e)
+        {
+            if (username.ForeColor == Color.Gray)
+            {
+                username.ForeColor = Color.Empty;
+                username.Text = "";
+
+            }
+        }
+
+      
+
+        private void password_Click(object sender, EventArgs e)
+        {
+            if (password.ForeColor == Color.Gray)
+            {
+                password.ForeColor = Color.Empty;
+                password.Text = "";
+
+            }
         }
     }
 }

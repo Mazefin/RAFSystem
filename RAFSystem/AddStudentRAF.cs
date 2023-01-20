@@ -171,7 +171,7 @@ namespace RAFSystem
                         Console.WriteLine("New record added to Student table");
 
 
-
+                        MessageBox.Show("Student Added");
 
 
 
@@ -225,6 +225,7 @@ namespace RAFSystem
             sy.Clear();
             age.Clear();
             gender.Clear();
+            middleName.Clear();
             costs.Text = "0.00";
             labprice.Text = "0.00";
             totalprice.Text = "0.00";

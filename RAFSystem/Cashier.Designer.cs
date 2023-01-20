@@ -163,7 +163,7 @@
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(111, 23);
             this.print.TabIndex = 17;
-            this.print.Text = "Print Receipt";
+            this.print.Text = "Pay";
             this.print.UseVisualStyleBackColor = true;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 

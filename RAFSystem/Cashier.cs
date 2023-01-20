@@ -1,9 +1,12 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +24,7 @@ namespace RAFSystem
         SqlCommand Commando;
         SqlDataReader DataReaders;
         SqlDataAdapter sDa;
-
+       
 
 
         public Cashier()
@@ -358,6 +361,25 @@ namespace RAFSystem
 
         private void print_Click(object sender, EventArgs e)
         {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // This if checks if tuition cost isn't 0
             if (double.Parse(totalcost.Text) > 0)
             {
@@ -374,16 +396,14 @@ namespace RAFSystem
 
 
 
-
-
-
-
-
-
-
-
-
-
+                        string ID = studentID.Text;
+                        string FirstName = firstnameBox.Text;
+                        string MiddleName = middlenameBox.Text;
+                        string LastName = lastnameBox.Text;
+                        int TuitionFee = (int)Double.Parse(totalcost.Text);
+                        int CashReceived = (int)Double.Parse(payout.Text);
+                        int Change = TuitionFee - (int)Double.Parse(payout.Text);
+                        int RemainingBalance = Change;
 
 
 
@@ -419,12 +439,15 @@ namespace RAFSystem
 
                                 Commando = con.CreateCommand();
                                 Commando.CommandText = "UPDATE StudentInfo SET"
-                                + " SubjectCosts = '" + totalcost.Text + "',"
-                                + " ExtraCosts = '" + totalcost.Text + "',"
                                 + " TotalCost = '" + totalcost.Text + "'"
                                  + " WHERE ID = " + studentID.Text;
                                 Commando.ExecuteNonQuery();
                                 Commando.Dispose();
+
+
+
+
+
 
                             }
                             else
@@ -442,13 +465,19 @@ namespace RAFSystem
 
                                 Commando = con.CreateCommand();
                                 Commando.CommandText = "UPDATE StudentInfo SET"
-                                + " SubjectCosts = '" + totalcost.Text + "',"
-                                + " ExtraCosts = '" + totalcost.Text + "',"
                                 + " TotalCost = '" + totalcost.Text + "',"
                                  + " Cash = '" + Total.ToString() + "'"
                                  + " WHERE ID = " + studentID.Text;
                                 Commando.ExecuteNonQuery();
                                 Commando.Dispose();
+
+
+                             
+
+
+
+
+
 
                             }
 
@@ -473,21 +502,11 @@ namespace RAFSystem
 
                             Commando = con.CreateCommand();
                             Commando.CommandText = "UPDATE StudentInfo SET"
-                            + " SubjectCosts = '" + totalcost.Text + "',"
-                            + " ExtraCosts = '" + totalcost.Text + "',"
                             + " TotalCost = '" + totalcost.Text + "',"
                             + " Cash = '" + totalcost.Text + "'"
                              + " WHERE ID = " + studentID.Text;
                             Commando.ExecuteNonQuery();
                             Commando.Dispose();
-
-
-
-
-
-
-
-
 
 
 
@@ -510,13 +529,13 @@ namespace RAFSystem
 
                             Commando = con.CreateCommand();
                             Commando.CommandText = "UPDATE StudentInfo SET"
-                            + " SubjectCosts = '" + totalcost.Text + "',"
-                            + " ExtraCosts = '" + totalcost.Text + "',"
                             + " TotalCost = '" + totalcost.Text + "',"
                             + " Cash = '" + "0" + "'"
                              + " WHERE ID = " + studentID.Text;
                             Commando.ExecuteNonQuery();
                             Commando.Dispose();
+
+
 
                         }
 
@@ -527,7 +546,33 @@ namespace RAFSystem
 
 
 
+                       string fileName = studentID.Text + ".pdf";
+                      
 
+                        string[] output =
+                       {
+                                "                Receipt                   ",
+                                "                " +  ID + "              ",
+                                FirstName + " " + MiddleName + " " + LastName,
+                                "Tuition Fee: " + "          " + TuitionFee,
+                                "Cash Received: " + "    " + CashReceived,
+                                "Change:          " + "        " + Change,
+                                "RemainingBalance: " + "   " + RemainingBalance
+                         };
+
+
+
+                        iTextSharp.text.Document doc = new iTextSharp.text.Document(PageSize.A4.Rotate());
+                      
+                        PdfWriter.GetInstance(doc, new FileStream(fileName, FileMode.Create));
+                        doc.Open();
+
+
+                        for (int i = 0; i < output.Length; i++)
+                        {
+                            doc.Add(new iTextSharp.text.Paragraph(output[i]));
+                        }
+                        doc.Close();
 
 
 
