@@ -18,3 +18,6 @@ C:\Users\AL\source\repos\RAFSystem\RAFSystem\obj\Debug\RAFSystem.Cashier.resourc
 C:\Users\AL\source\repos\RAFSystem\RAFSystem\bin\Debug\System.Data.SqlClient.dll
 C:\Users\AL\source\repos\RAFSystem\RAFSystem\bin\Debug\System.Data.SqlClient.xml
 C:\Users\AL\source\repos\RAFSystem\RAFSystem\obj\Debug\RAFSystem.csproj.CopyComplete
+C:\Users\AL\source\repos\RAFSystem\RAFSystem\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\AL\source\repos\RAFSystem\RAFSystem\bin\Debug\itextsharp.dll
+C:\Users\AL\source\repos\RAFSystem\RAFSystem\bin\Debug\itextsharp.xml
