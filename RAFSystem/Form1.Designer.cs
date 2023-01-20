@@ -39,7 +39,7 @@
             // 
             // loginbtn
             // 
-            this.loginbtn.Location = new System.Drawing.Point(151, 202);
+            this.loginbtn.Location = new System.Drawing.Point(151, 198);
             this.loginbtn.Name = "loginbtn";
             this.loginbtn.Size = new System.Drawing.Size(75, 23);
             this.loginbtn.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // exitbtn
             // 
-            this.exitbtn.Location = new System.Drawing.Point(151, 264);
+            this.exitbtn.Location = new System.Drawing.Point(151, 255);
             this.exitbtn.Name = "exitbtn";
             this.exitbtn.Size = new System.Drawing.Size(75, 23);
             this.exitbtn.TabIndex = 1;
@@ -108,7 +108,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(372, 312);
+            this.ControlBox = false;
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,9 +119,11 @@
             this.Controls.Add(this.username);
             this.Controls.Add(this.exitbtn);
             this.Controls.Add(this.loginbtn);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "RAF System";
-         
             this.ResumeLayout(false);
             this.PerformLayout();
 

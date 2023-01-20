@@ -160,6 +160,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 420);
+            this.ControlBox = false;
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -172,6 +173,8 @@
             this.Controls.Add(this.addbtn);
             this.Controls.Add(this.griddata);
             this.Name = "Registrar";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Registrar";
             this.Load += new System.EventHandler(this.Registrar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.griddata)).EndInit();
