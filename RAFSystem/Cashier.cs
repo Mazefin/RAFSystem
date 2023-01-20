@@ -369,6 +369,24 @@ namespace RAFSystem
                     //this if will try if the payout is greater than 0 or if its a number
                     if (Double.TryParse(payout.Text, out double result) && Double.Parse(payout.Text) > 0)
                     {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         double Payout = double.Parse(payout.Text);
 
                         con.Open();
