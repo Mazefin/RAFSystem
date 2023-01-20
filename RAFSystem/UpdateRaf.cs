@@ -161,57 +161,73 @@ namespace RAFSystem
 
 
             // These Section Updates and Replaces your ID and Subjects
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandText = "UPDATE StudentInfo SET"
-                    + " FirstName = '" + FirstName + "',"
-                    + " LastName =  '" + LastName  + "',"
-                    + " Course = '" + Course + "',"
-                    + " SchoolYears = '" +SchoolYear + "',"
-                    + " Age = '" + Age + "',"
-                    + " Gender = '" + Gender + "',"
-                    + " SubjectCosts = '" + SubjectCost + "',"
-                    + " ExtraCosts = '" + ExtraCost + "',"
-                    + " TotalCost = '" + TotalCosts + "',"
-                    + " MiddleName = '" + MiddleName + "'"
-                    + " WHERE ID = " + StID;
 
-            cmd.ExecuteNonQuery();
+            if (
+                  Int32.TryParse(Age, out int result) == true &&
+                       result > 0 
 
+                )
+            {
 
-            cmd.CommandText = "DELETE FROM StudentInfoFull WHERE StudentID = "
-                       + StID;
+                        con.Open();
+                        SqlCommand cmd = con.CreateCommand();
+                        cmd.CommandText = "UPDATE StudentInfo SET"
+                            + " FirstName = '" + FirstName + "',"
+                            + " LastName =  '" + LastName + "',"
+                            + " Course = '" + Course + "',"
+                            + " SchoolYears = '" + SchoolYear + "',"
+                            + " Age = '" + Age + "',"
+                            + " Gender = '" + Gender + "',"
+                            + " SubjectCosts = '" + SubjectCost + "',"
+                            + " ExtraCosts = '" + ExtraCost + "',"
+                            + " TotalCost = '" + TotalCosts + "',"
+                            + " MiddleName = '" + MiddleName + "'"
+                            + " WHERE ID = " + StID;
 
-            cmd.ExecuteNonQuery();
-
-            con.Close();
-
-
-            con.Open();
-
-            SqlCommand cmd1 = con.CreateCommand();
-                for (int i = 0; i <= listView1.Items.Count - 1; i++)
-                {
-
-                    cmd1.CommandText = "INSERT INTO StudentInfoFull(StudentID, Subject) VALUES ('"
-                   + StID
-                   + "','" + listView1.Items[i].SubItems[0].Text
-                   + "')";
-
-                    cmd1.ExecuteNonQuery();
-                }
-            
+                        cmd.ExecuteNonQuery();
 
 
+                        cmd.CommandText = "DELETE FROM StudentInfoFull WHERE StudentID = "
+                                   + StID;
 
-                MessageBox.Show("Student Record Updated");
+                        cmd.ExecuteNonQuery();
 
-            con.Close();
-
-
+                        con.Close();
 
 
+                        con.Open();
 
+                        SqlCommand cmd1 = con.CreateCommand();
+                        for (int i = 0; i <= listView1.Items.Count - 1; i++)
+                        {
+
+                            cmd1.CommandText = "INSERT INTO StudentInfoFull(StudentID, Subject) VALUES ('"
+                           + StID
+                           + "','" + listView1.Items[i].SubItems[0].Text
+                           + "')";
+
+                            cmd1.ExecuteNonQuery();
+                        }
+
+
+
+
+                        MessageBox.Show("Student Record Updated");
+
+                        con.Close();
+
+
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("Either Age, Student ID or Both isn't Integers or they are in the Invalid Spectrum");
+
+
+
+            }
             // ------------
 
 
@@ -480,11 +496,14 @@ namespace RAFSystem
 
                 double Costs = Double.Parse(labprice.Text);
 
-                double Result = Costs - tempClaus;
+                if (Double.Parse(labprice.Text) > 0) {
+                    double Result = Costs - tempClaus;
 
-                labprice.Text = Result.ToString();
 
 
+                    labprice.Text = Result.ToString();
+
+                }
 
 
             }
@@ -541,19 +560,20 @@ namespace RAFSystem
                 double Costs = Double.Parse(subjectcosts.Text);
 
 
+                if (Costs > 0)
+                {   
 
-                double Result = Costs - tempClaus;
+                    double Result = Costs - tempClaus;
 
-                subjectcosts.Text = Result.ToString();
+                    
+
+                    subjectcosts.Text = Result.ToString();
 
 
+                    double OverResult = Result + LabPrice;
 
-
-
-                double OverResult = Result + LabPrice;
-
-                totalprice.Text = OverResult.ToString();
-
+                    totalprice.Text = OverResult.ToString();
+                }
 
 
             }
@@ -652,6 +672,11 @@ namespace RAFSystem
 
 
 
+
+        }
+
+        private void printraf_Click(object sender, EventArgs e)
+        {
 
         }
     }

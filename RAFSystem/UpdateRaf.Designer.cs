@@ -58,11 +58,12 @@
             this.combo = new System.Windows.Forms.ComboBox();
             this.middleName = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.printraf = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(392, 420);
+            this.button1.Location = new System.Drawing.Point(362, 424);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -72,7 +73,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(392, 376);
+            this.button2.Location = new System.Drawing.Point(362, 376);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -261,7 +262,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(498, 399);
+            this.label12.Location = new System.Drawing.Point(500, 408);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 13);
             this.label12.TabIndex = 24;
@@ -270,7 +271,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(498, 420);
+            this.label13.Location = new System.Drawing.Point(498, 429);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(58, 13);
             this.label13.TabIndex = 25;
@@ -288,7 +289,7 @@
             // totalprice
             // 
             this.totalprice.AutoSize = true;
-            this.totalprice.Location = new System.Drawing.Point(597, 420);
+            this.totalprice.Location = new System.Drawing.Point(597, 429);
             this.totalprice.Name = "totalprice";
             this.totalprice.Size = new System.Drawing.Size(28, 13);
             this.totalprice.TabIndex = 27;
@@ -319,11 +320,22 @@
             this.label14.TabIndex = 30;
             this.label14.Text = "Middle Name";
             // 
+            // printraf
+            // 
+            this.printraf.Location = new System.Drawing.Point(247, 424);
+            this.printraf.Name = "printraf";
+            this.printraf.Size = new System.Drawing.Size(75, 23);
+            this.printraf.TabIndex = 31;
+            this.printraf.Text = "Print RAF";
+            this.printraf.UseVisualStyleBackColor = true;
+            this.printraf.Click += new System.EventHandler(this.printraf_Click);
+            // 
             // UpdateRaf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(655, 459);
+            this.Controls.Add(this.printraf);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.middleName);
             this.Controls.Add(this.combo);
@@ -355,7 +367,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "UpdateRaf";
-            this.Text = "UpdateRAF";
+            this.Text = "Configure RAF";
             this.Load += new System.EventHandler(this.UpdateRaf_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -394,5 +406,6 @@
         private System.Windows.Forms.ComboBox combo;
         private System.Windows.Forms.TextBox middleName;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button printraf;
     }
 }

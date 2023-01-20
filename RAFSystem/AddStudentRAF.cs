@@ -96,6 +96,7 @@ namespace RAFSystem
                 gender.Text == "" ||
                 middleName.Text == ""
 
+
             )
             {
                 MessageBox.Show("Please Fill the Form Properly.");
@@ -106,88 +107,109 @@ namespace RAFSystem
             else
             {
 
-                Commando = new SqlCommand("SELECT * FROM StudentInfo WHERE ID='"+ stnid.Text +"'",con);
-                DataAdept = new SqlDataAdapter(Commando);
-                DataTable dt = new DataTable();
-                DataAdept.Fill(dt);
+               
 
-                if (dt.Rows.Count >=1) {
+               if (
+                     Int32.TryParse(age.Text, out int result) == true &&
+                       result > 0 &&
+                       Int32.TryParse(stnid.Text, out int results) == true &&
+                       results > 0
 
-                    MessageBox.Show("ID already existed.");
+                    ) 
+                { 
+
+                        Commando = new SqlCommand("SELECT * FROM StudentInfo WHERE ID='" + stnid.Text + "'", con);
+                    DataAdept = new SqlDataAdapter(Commando);
+                    DataTable dt = new DataTable();
+                    DataAdept.Fill(dt);
+
+                    if (dt.Rows.Count >= 1) {
+
+                        MessageBox.Show("ID already existed.");
+
+                    }
+                    else
+                    {
+
+
+                        con.Open();
+
+
+
+
+                        // These add Student's Identification
+                        String TempID = stnid.Text;
+                        String TFirstName = firstname.Text;
+                        String TLastName = lastname.Text;
+                        String TCourse = course.Text;
+                        String SchoolYear = sy.Text;
+                        String Age = age.Text;
+                        String Gender = gender.Text;
+                        String SubjectCosts = costs.Text;
+                        String ExtraCosts = labprice.Text;
+                        String TotalCosts = totalprice.Text;
+                        String MiddleName = middleName.Text;
+
+
+                        SqlCommand cmd = con.CreateCommand();
+                        cmd.CommandText = "INSERT INTO StudentInfo VALUES ('"
+                            + TempID
+                            + "','" + TFirstName
+                            + "','" + TLastName
+                            + "','" + TCourse
+                            + "','" + SchoolYear
+                            + "','" + Age
+                            + "','" + Gender
+                            + "','" + SubjectCosts
+                            + "','" + ExtraCosts
+                            + "','" + TotalCosts
+                            + "','" + MiddleName
+                            + "','" + "Null"
+                            +
+                            "')";
+                        cmd.ExecuteNonQuery();
+                        Console.WriteLine("New record added to Student table");
+
+
+
+
+
+
+
+
+                        // ---------------------------------------
+
+
+                        // These add Subject with the basis of the Student's ID
+
+                        SqlCommand cmd1 = con.CreateCommand();
+                        for (int i = 0; i <= listView1.Items.Count - 1; i++)
+                        {
+
+                            cmd1.CommandText = "INSERT INTO StudentInfoFull(StudentID, Subject) VALUES ('"
+                           + TempID
+                           + "','" + listView1.Items[i].SubItems[0].Text
+                           + "')";
+
+                            cmd1.ExecuteNonQuery();
+                        }
+
+
+                        // -----------------------------------------
+
+
+
+                        // Standard Close 
+                        con.Close();
+
+
+                    }
 
                 }
                 else
                 {
+                    MessageBox.Show("Either Age, Student ID or Both isn't Integers or they are in the Invalid Spectrum");
 
-
-                    con.Open();
-
-
-
-
-                    // These add Student's Identification
-                    String TempID = stnid.Text;
-                    String TFirstName = firstname.Text;
-                    String TLastName = lastname.Text;
-                    String TCourse = course.Text;
-                    String SchoolYear = sy.Text;
-                    String Age = age.Text;
-                    String Gender = gender.Text;
-                    String SubjectCosts = costs.Text;
-                    String ExtraCosts = labprice.Text;
-                    String TotalCosts = totalprice.Text;
-                    String MiddleName = middleName.Text;
-
-
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandText = "INSERT INTO StudentInfo VALUES ('"
-                        + TempID
-                        + "','" + TFirstName
-                        + "','" + TLastName
-                        + "','" + TCourse
-                        + "','" + SchoolYear
-                        + "','" + Age
-                        + "','" + Gender
-                        + "','" + SubjectCosts
-                        + "','" + ExtraCosts
-                        + "','" + TotalCosts
-                        + "','" + MiddleName
-                        +
-                        "')";
-                    cmd.ExecuteNonQuery();
-                    Console.WriteLine("New record added to Student table");
-
-
-
-
-
-
-
-
-                    // ---------------------------------------
-
-
-                    // These add Subject with the basis of the Student's ID
-
-                    SqlCommand cmd1 = con.CreateCommand();
-                    for (int i = 0; i <= listView1.Items.Count - 1; i++)
-                    {
-
-                        cmd1.CommandText = "INSERT INTO StudentInfoFull(StudentID, Subject) VALUES ('"
-                       + TempID
-                       + "','" + listView1.Items[i].SubItems[0].Text
-                       + "')";
-
-                        cmd1.ExecuteNonQuery();
-                    }
-
-
-                    // -----------------------------------------
-
-
-
-                    // Standard Close 
-                    con.Close();
 
 
                 }

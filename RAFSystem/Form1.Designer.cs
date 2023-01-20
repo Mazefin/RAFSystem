@@ -38,7 +38,7 @@
             // 
             // loginbtn
             // 
-            this.loginbtn.Location = new System.Drawing.Point(249, 234);
+            this.loginbtn.Location = new System.Drawing.Point(151, 202);
             this.loginbtn.Name = "loginbtn";
             this.loginbtn.Size = new System.Drawing.Size(75, 23);
             this.loginbtn.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // exitbtn
             // 
-            this.exitbtn.Location = new System.Drawing.Point(51, 234);
+            this.exitbtn.Location = new System.Drawing.Point(151, 264);
             this.exitbtn.Name = "exitbtn";
             this.exitbtn.Size = new System.Drawing.Size(75, 23);
             this.exitbtn.TabIndex = 1;

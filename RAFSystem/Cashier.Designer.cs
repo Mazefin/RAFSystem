@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.studentID = new System.Windows.Forms.TextBox();
-            this.summonstn = new System.Windows.Forms.Button();
             this.ln = new System.Windows.Forms.Label();
             this.fn1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,7 +37,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.payment = new System.Windows.Forms.Button();
             this.payout = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.print = new System.Windows.Forms.Button();
@@ -57,6 +55,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Last = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.overpay = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -72,23 +73,14 @@
             // 
             this.studentID.Location = new System.Drawing.Point(105, 12);
             this.studentID.Name = "studentID";
+            this.studentID.ReadOnly = true;
             this.studentID.Size = new System.Drawing.Size(100, 20);
             this.studentID.TabIndex = 1;
-            // 
-            // summonstn
-            // 
-            this.summonstn.Location = new System.Drawing.Point(12, 38);
-            this.summonstn.Name = "summonstn";
-            this.summonstn.Size = new System.Drawing.Size(111, 23);
-            this.summonstn.TabIndex = 2;
-            this.summonstn.Text = "Summon Student";
-            this.summonstn.UseVisualStyleBackColor = true;
-            this.summonstn.Click += new System.EventHandler(this.summonstn_Click);
             // 
             // ln
             // 
             this.ln.AutoSize = true;
-            this.ln.Location = new System.Drawing.Point(9, 134);
+            this.ln.Location = new System.Drawing.Point(13, 89);
             this.ln.Name = "ln";
             this.ln.Size = new System.Drawing.Size(58, 13);
             this.ln.TabIndex = 3;
@@ -97,7 +89,7 @@
             // fn1
             // 
             this.fn1.AutoSize = true;
-            this.fn1.Location = new System.Drawing.Point(12, 185);
+            this.fn1.Location = new System.Drawing.Point(16, 140);
             this.fn1.Name = "fn1";
             this.fn1.Size = new System.Drawing.Size(57, 13);
             this.fn1.TabIndex = 4;
@@ -106,7 +98,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 252);
+            this.label4.Location = new System.Drawing.Point(16, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 5;
@@ -116,7 +108,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(146, 134);
+            this.label5.Location = new System.Drawing.Point(150, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 6;
@@ -125,7 +117,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(148, 185);
+            this.label6.Location = new System.Drawing.Point(152, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 7;
@@ -149,19 +141,9 @@
             this.comboBox1.TabIndex = 12;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // payment
-            // 
-            this.payment.Location = new System.Drawing.Point(23, 376);
-            this.payment.Name = "payment";
-            this.payment.Size = new System.Drawing.Size(100, 23);
-            this.payment.TabIndex = 13;
-            this.payment.Text = "Sent Payment";
-            this.payment.UseVisualStyleBackColor = true;
-            this.payment.Click += new System.EventHandler(this.payment_Click);
-            // 
             // payout
             // 
-            this.payout.Location = new System.Drawing.Point(23, 350);
+            this.payout.Location = new System.Drawing.Point(12, 337);
             this.payout.Name = "payout";
             this.payout.Size = new System.Drawing.Size(100, 20);
             this.payout.TabIndex = 14;
@@ -169,7 +151,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 311);
+            this.label10.Location = new System.Drawing.Point(9, 268);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 13);
             this.label10.TabIndex = 15;
@@ -177,7 +159,7 @@
             // 
             // print
             // 
-            this.print.Location = new System.Drawing.Point(149, 376);
+            this.print.Location = new System.Drawing.Point(12, 377);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(111, 23);
             this.print.TabIndex = 17;
@@ -197,7 +179,7 @@
             // 
             // lastnameBox
             // 
-            this.lastnameBox.Location = new System.Drawing.Point(8, 111);
+            this.lastnameBox.Location = new System.Drawing.Point(12, 66);
             this.lastnameBox.Name = "lastnameBox";
             this.lastnameBox.ReadOnly = true;
             this.lastnameBox.Size = new System.Drawing.Size(88, 20);
@@ -213,7 +195,7 @@
             // 
             // firstnameBox
             // 
-            this.firstnameBox.Location = new System.Drawing.Point(8, 162);
+            this.firstnameBox.Location = new System.Drawing.Point(12, 117);
             this.firstnameBox.Name = "firstnameBox";
             this.firstnameBox.ReadOnly = true;
             this.firstnameBox.Size = new System.Drawing.Size(88, 20);
@@ -230,7 +212,7 @@
             // 
             // middlenameBox
             // 
-            this.middlenameBox.Location = new System.Drawing.Point(8, 229);
+            this.middlenameBox.Location = new System.Drawing.Point(12, 184);
             this.middlenameBox.Name = "middlenameBox";
             this.middlenameBox.ReadOnly = true;
             this.middlenameBox.Size = new System.Drawing.Size(88, 20);
@@ -238,7 +220,7 @@
             // 
             // genderBox
             // 
-            this.genderBox.Location = new System.Drawing.Point(151, 111);
+            this.genderBox.Location = new System.Drawing.Point(155, 66);
             this.genderBox.Name = "genderBox";
             this.genderBox.ReadOnly = true;
             this.genderBox.Size = new System.Drawing.Size(88, 20);
@@ -246,7 +228,7 @@
             // 
             // ageBox
             // 
-            this.ageBox.Location = new System.Drawing.Point(151, 162);
+            this.ageBox.Location = new System.Drawing.Point(155, 117);
             this.ageBox.Name = "ageBox";
             this.ageBox.ReadOnly = true;
             this.ageBox.Size = new System.Drawing.Size(88, 20);
@@ -254,7 +236,7 @@
             // 
             // totalcost
             // 
-            this.totalcost.Location = new System.Drawing.Point(106, 308);
+            this.totalcost.Location = new System.Drawing.Point(117, 268);
             this.totalcost.Name = "totalcost";
             this.totalcost.ReadOnly = true;
             this.totalcost.Size = new System.Drawing.Size(88, 20);
@@ -263,7 +245,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 252);
+            this.label2.Location = new System.Drawing.Point(152, 207);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 25;
@@ -271,7 +253,7 @@
             // 
             // courseBox
             // 
-            this.courseBox.Location = new System.Drawing.Point(151, 229);
+            this.courseBox.Location = new System.Drawing.Point(155, 184);
             this.courseBox.Name = "courseBox";
             this.courseBox.ReadOnly = true;
             this.courseBox.Size = new System.Drawing.Size(88, 20);
@@ -309,11 +291,41 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 14;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(70, 291);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 13);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Deducted by :";
+            // 
+            // overpay
+            // 
+            this.overpay.AutoSize = true;
+            this.overpay.Location = new System.Drawing.Point(150, 291);
+            this.overpay.Name = "overpay";
+            this.overpay.Size = new System.Drawing.Size(13, 13);
+            this.overpay.TabIndex = 30;
+            this.overpay.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(70, 304);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 13);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Due to Over payment";
+            // 
             // Cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 454);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.overpay);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ylBox);
             this.Controls.Add(this.courseBox);
@@ -328,7 +340,6 @@
             this.Controls.Add(this.print);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.payout);
-            this.Controls.Add(this.payment);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label6);
@@ -336,7 +347,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.fn1);
             this.Controls.Add(this.ln);
-            this.Controls.Add(this.summonstn);
             this.Controls.Add(this.studentID);
             this.Controls.Add(this.label1);
             this.Name = "Cashier";
@@ -350,7 +360,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox studentID;
-        private System.Windows.Forms.Button summonstn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -359,7 +368,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button payment;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button print;
@@ -380,5 +388,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox Last;
         private System.Windows.Forms.TextBox totalcost;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label overpay;
+        private System.Windows.Forms.Label label13;
     }
 }

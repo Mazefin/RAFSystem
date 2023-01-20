@@ -24,11 +24,38 @@ namespace RAFSystem
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           
             Registrar Regi = new Registrar();
             Cashier Cash = new Cashier();
 
-            Regi.Show();
+        
+
+            if (username.Text == "Cashier" && password.Text == "123")
+            {
+                this.Hide();
+                Cash.Show();
+
+
+            }else if (username.Text == "Registrar" && password.Text == "123")
+            {
+                this.Hide();
+                Regi.Show();
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("Invalud Input, Only Cashier and Registrar");
+
+
+
+            }
+
+
+
+
+
 
 
 
