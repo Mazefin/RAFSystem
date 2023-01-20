@@ -406,12 +406,33 @@ namespace RAFSystem
                         int RemainingBalance;
 
 
+                        //change
+                        if (TuitionFee > Int32.Parse(payout.Text))
+                        {
+                            Change = TuitionFee - CashReceived;
+                            RemainingBalance = 0;
+
+                        }
+                        else
+                        {
+                            Change = CashReceived - TuitionFee;
+
+                        }
+                      
+
+
+                        //remaining
+
                         if (TuitionFee < CashReceived) {
                                 RemainingBalance = CashReceived - TuitionFee;
+                               
 
-                        }else
+                        }
+                        else
                         {
                             RemainingBalance = TuitionFee - CashReceived;
+
+                            RemainingBalance = 0;
                             Change = 0;
 
 
@@ -446,7 +467,7 @@ namespace RAFSystem
 
                                 totalcost.Text = "0";
 
-
+                                RemainingBalance = 0;
                                 Commando = con.CreateCommand();
                                 Commando.CommandText = "UPDATE StudentInfo SET"
                                 + " TotalCost = '" + totalcost.Text + "'"
@@ -518,7 +539,7 @@ namespace RAFSystem
                             Commando.ExecuteNonQuery();
                             Commando.Dispose();
 
-
+                            TuitionFee = 0;
 
 
 
@@ -530,6 +551,8 @@ namespace RAFSystem
                         else if (Payout < ParsedTotalCosts)
                         {
                             double Total = ParsedTotalCosts - Payout;
+                            RemainingBalance = Int32.Parse(totalcost.Text) - Int32.Parse(payout.Text);
+
                             MessageBox.Show
                               ("Remaining Balance: " +
                                 Total
@@ -545,8 +568,7 @@ namespace RAFSystem
                             Commando.ExecuteNonQuery();
                             Commando.Dispose();
 
-
-
+                          
                         }
 
 
